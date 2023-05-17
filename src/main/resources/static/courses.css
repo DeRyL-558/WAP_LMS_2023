@@ -1,0 +1,18 @@
+/*========KURSY LISTA========*/
+
+.course_header
+{
+    width: 780px;
+    padding: 8px;
+    background-color: #aabbdd;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.course_header:hover
+{
+    color: white;
+    background-color: #66aaff;
+}
+
+/*===========================*/
