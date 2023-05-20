@@ -38,6 +38,5 @@ public class DbInit implements CommandLineRunner
                 new Course("Graphics and Visualization", "IT Department")
         ));*/
 
-        courseRepository.findAll();
     }
 }

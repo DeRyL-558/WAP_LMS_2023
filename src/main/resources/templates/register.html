@@ -75,12 +75,14 @@
                     </fieldset>
                     <fieldset class = "class_field"><legend>Login</legend>
                         <input class = "form_text_block" name = "login" type = "text" required/>
+                        <span style = "color: red" th:text = "${warning_login}"></span>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Your Password</legend>
                         <input class = "form_text_block" name = "your_password" type = "password" required/>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Confirm Password</legend>
                         <input class = "form_text_block" name = "password" type = "password" required/>
+                        <span style = "color: red" th:text = "${warning_password}"></span>
                     </fieldset>
                 </div>
                 

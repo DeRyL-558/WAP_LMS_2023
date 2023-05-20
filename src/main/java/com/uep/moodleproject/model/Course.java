@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class Course
 {
     @Id
     @GeneratedValue
+    @NonNull
     private Long course_id;
 
     private String course_name;
