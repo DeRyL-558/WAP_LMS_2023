@@ -28,7 +28,4 @@ public class HomeController
 
     @GetMapping(path = "/courses")
     public String courses(Model model, HttpSession hhtpSession) { return "courses"; }
-
-    @GetMapping(path = "/my-courses/course-1")
-    public String MY_course(Model model, HttpSession hhtpSession) { return "course"; }
 }
