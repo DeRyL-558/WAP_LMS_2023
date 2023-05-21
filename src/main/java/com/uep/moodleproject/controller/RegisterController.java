@@ -52,6 +52,13 @@ public class RegisterController
         warning_login = "";
         warning_password = "";
         userRepository.save(user);
-        return "redirect:/";
+        if (user.getType_id() == 3)
+        {
+            return "redirect:/register-notification";
+        }
+        else
+        {
+            return "redirect:/";
+        }
     }
 }

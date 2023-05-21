@@ -24,6 +24,9 @@ public class HomeController
         return "index";
     }
 
+    @GetMapping(path = "/register-notification")
+    private String registerNotification() { return "register_notification"; }
+
     //new User(new Integer(1), "xdomin", "dupa123", "Dominik", "Torreto", "cosiki@xyz.com", "student");
 
     @GetMapping(path = "/courses")
