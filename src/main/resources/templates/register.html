@@ -60,7 +60,7 @@
                     </fieldset>
                     <br/><br/><label for = "user_type">Which user are you?</label>
                     <select id = "user_type" th:field = "*{roles}">
-                        <option value = "3">course coordinator</option>
+                        <option value = "3">course coordinator</option> <!--th:selected = "${roles == 3}"-->
                         <option value = "2" selected>student</option>
                         <option value = "4">instructor</option>
                     </select>

@@ -31,4 +31,7 @@ public class HomeController
 
     @GetMapping(path = "/courses")
     public String courses(Model model, HttpSession hhtpSession) { return "courses"; }
+
+    @GetMapping(path = "/login")
+    public String sign_in() { return "login"; }
 }

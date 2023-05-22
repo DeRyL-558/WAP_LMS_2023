@@ -3,8 +3,7 @@ package com.uep.moodleproject.controller;
 import com.uep.moodleproject.dto.UserDTO;
 import com.uep.moodleproject.model.User;
 import com.uep.moodleproject.repository.UserRepository;
-import com.uep.moodleproject.service.UserService;
-import jakarta.annotation.PostConstruct;
+import com.uep.moodleproject.service.UserServiceImplementation;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,10 +21,10 @@ public class RegisterController
 {
     private final UserRepository userRepository;
 
-    private UserService userService;
+    private UserServiceImplementation userService;
 
     @Autowired
-    public RegisterController(UserRepository userRepository, UserService userService)
+    public RegisterController(UserRepository userRepository, UserServiceImplementation userService)
     {
         this.userRepository = userRepository;
         this.userService = userService;
@@ -49,7 +48,7 @@ public class RegisterController
 
         userService.save(userDTO);
         return "redirect:/";
-        /*if (user.getRoles() == 3)
+        /*if (userDTO.getRoles() == 3)
         {
             return "redirect:/register-notification";
         }

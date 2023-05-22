@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>LMS - Sign in</title>
+    <link rel = "stylesheet" type = "text/css" href = "/style.css"/> <!--w finalnej wersji zmienić ścieżkę na style.css-->
+    <link rel = "stylesheet" type = "text/css" href = "/register.css"/>
+</head>
+<body>
+    <header>
+        <div class = "head_part">
+            <h1 class = "logo">Learning Management System</h1>
+        </div>
+        <div class = "head_part">
+            <form action = "" method = "post">
+                <div class = "form_row">
+                    <fieldset class = "nav_field"><legend>Login</legend>
+                        <input id = "nav_login" type = "text"/>
+                    </fieldset>
+                    <fieldset class = "nav_field" style = "margin-left: 10px;"><legend>Password</legend>
+                        <input id = "nav_password" type = "password"/>
+                    </fieldset>
+                </div>
+                <div class = "form_row">
+                    <input id = "sign_inB" type = "submit" value = "Sign in"/>
+                    <a href = "/register"><input id = "registerB" type = "button" value = "Register"/></a>
+                </div>
+            </form>
+        </div>
+    </header>
+    <div id = "container">
+        <nav id = "side_nav">
+            <ul>
+                <li><a href = "/">Home</a></li> <!--źródła według kontrolerów-->
+                <ul>
+                    <li><a href = "/courses">Courses</a></li>
+                    <ul>
+                        <li><a href = "/courses/it">IT Department</a></li>
+                        <li><a href = "/courses/">Faculty</a></li>
+                    </ul>
+                    <li><a href = "#">My courses</a></li>
+                    <ul>
+                        <li><a href = "/my-courses/course-1">Course 1</a></li>
+                        <li><a href = "#">Course 2</a></li>
+                    </ul>
+                </ul>
+            </ul>
+        </nav>
+        <main style = "height: 800px;">
+            <h2>Sign in</h2>
+
+            <form id = "signing_in" th:action = "@{/login}" method = "post">
+
+                <div class="half_form">
+                    <fieldset class = "class_field"><legend>Login</legend>
+                        <input class = "form_text_block" name = "login" type = "text" required/>
+                    </fieldset>
+                    <fieldset class = "class_field"><legend>Password</legend>
+                        <input class = "form_text_block" name = "password" type = "password" required/>
+                    </fieldset>
+                    <br/><input id = "REGIS" type = "submit" value = "Sign in"/>
+                </div>
+                <div class="half_form">
+
+                </div>
+
+            </form>
+
+        </main>
+    </div>
+    <footer>
+        <h5>Authors: Michał Kogowski, Szymon Chrobot</h5>
+    </footer>
+</body>
+</html>
