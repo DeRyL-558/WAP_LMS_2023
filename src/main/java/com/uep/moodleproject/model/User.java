@@ -1,12 +1,11 @@
 package com.uep.moodleproject.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Collection;
 
 @NoArgsConstructor
 @Getter
@@ -16,7 +15,7 @@ import lombok.Setter;
 public class User
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
     private String login;
@@ -24,15 +23,22 @@ public class User
     private String email;
     private String first_name;
     private String last_name;
-    private Integer type_id;
 
-    public User(String login, String password, String email, String first_name, String last_name, Integer type_id)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    )
+    private Collection<Role> roles;
+
+    public User(String login, String password, String email, String first_name, String last_name, Collection<Role> roles)
     {
         this.login = login;
         this.password = password;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.type_id = type_id;
+        this.roles = roles;
     }
 }

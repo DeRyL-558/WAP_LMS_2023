@@ -49,17 +49,17 @@
         <main style = "height: 800px;">
             <h2>Register</h2>
 
-            <form id = "registration" th:action = "@{/register}" method = "post">
+            <form id = "registration" th:action = "@{/register}" method = "post" th:object = "${users}">
                 
                 <div class = "half_form">
                     <fieldset class = "class_field"><legend>First Name</legend>
-                        <input class = "form_text_block" name = "first_name" type = "text" required/>
+                        <input class = "form_text_block" th:field = "*{first_name}" type = "text" required/>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Last Name</legend>
-                        <input class = "form_text_block" name = "last_name" type = "text" required/>
+                        <input class = "form_text_block" th:field = "*{last_name}" type = "text" required/>
                     </fieldset>
                     <br/><br/><label for = "user_type">Which user are you?</label>
-                    <select id = "user_type" name = "type_id">
+                    <select id = "user_type" th:field = "*{roles}">
                         <option value = "3">course coordinator</option>
                         <option value = "2" selected>student</option>
                         <option value = "4">instructor</option>
@@ -71,18 +71,18 @@
                 
                 <div class = "half_form">
                     <fieldset class = "class_field"><legend>E-mail</legend>
-                        <input class = "form_text_block" name = "email" type = "text" required/>
+                        <input class = "form_text_block" th:field = "*{email}" type = "text" required/>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Login</legend>
-                        <input class = "form_text_block" name = "login" type = "text" required/>
-                        <span style = "color: red" th:text = "${warning_login}"></span>
+                        <input class = "form_text_block" th:field = "*{login}" type = "text" required/>
+                        <span style = "color: red" th:if = "${param.warning_login}">This login is claimed!</span>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Your Password</legend>
                         <input class = "form_text_block" name = "your_password" type = "password" required/>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Confirm Password</legend>
-                        <input class = "form_text_block" name = "password" type = "password" required/>
-                        <span style = "color: red" th:text = "${warning_password}"></span>
+                        <input class = "form_text_block" th:field = "*{password}" type = "password" required/>
+                        <span style = "color: red" th:if = "${param.warning_password}">Passwords are different!</span>
                     </fieldset>
                 </div>
                 
