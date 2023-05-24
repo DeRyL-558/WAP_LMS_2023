@@ -40,9 +40,9 @@ public class UserServiceImplementation implements UserService
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
     {
-        User user = userRepository.findByEmail(username);
+        User user = userRepository.findByEmail(email);
         if (user == null)
         {
             throw new UsernameNotFoundException("Invalid login or password.");
