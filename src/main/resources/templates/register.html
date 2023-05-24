@@ -11,21 +11,10 @@
         <div class = "head_part">
             <h1 class = "logo">Learning Management System</h1>
         </div>
-        <div class = "head_part">
-            <form action = "" method = "post">
-                <div class = "form_row">
-                    <fieldset class = "nav_field"><legend>Login</legend>
-                        <input id = "nav_login" type = "text"/>
-                    </fieldset>
-                    <fieldset class = "nav_field" style = "margin-left: 10px;"><legend>Password</legend>
-                        <input id = "nav_password" type = "password"/>
-                    </fieldset>
-                </div>
-                <div class = "form_row">
-                    <input id = "sign_inB" type = "submit" value = "Sign in"/>
-                    <a href = "/register"><input id = "registerB" type = "button" value = "Register"/></a>
-                </div>
-            </form>
+        <div class = "head_part" style = "text-align: right;">
+            <br/>
+            <a href = "/login"><input class = "nav_button" type = "button" value = "Sign in"/></a>
+            <a href = "/register"><input class = "nav_button" type = "button" value = "Register"/></a>
         </div>
     </header>
     <div id = "container">
@@ -59,10 +48,8 @@
                         <input class = "form_text_block" th:field = "*{last_name}" type = "text" required/>
                     </fieldset>
                     <br/><br/><label for = "user_type">Which user are you?</label>
-                    <select id = "user_type" th:field = "*{roles}">
-                        <option value = "3">course coordinator</option> <!--th:selected = "${roles == 3}"-->
-                        <option value = "2" selected>student</option>
-                        <option value = "4">instructor</option>
+                    <select id = "user_type" th:field = "*{role}">
+                        <option th:each = "role : ${availableRoles}" th:value = "${role.role_id}" th:text = "${role.role_name}">course coordinator</option> <!--th:selected = "${roles == 3}"-->
                     </select>
                     <br/><br/><label><input name = "regulations" type = "checkbox" required/> Accept regulations</label>
                     

@@ -28,16 +28,12 @@ h1.logo
     margin-left: 20px;
 }
 
-fieldset.nav_field
+.nav_button
 {
-    width: auto;
-    float: left;
-}
-
-.form_row
-{
-    clear: both;
-    padding-top: 4px;
+    width: 80px;
+    height: 40px;
+    font-size: 18px;
+    margin-right: 20px;
 }
 
 /*=========================*/

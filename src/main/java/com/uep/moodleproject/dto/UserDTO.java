@@ -15,16 +15,16 @@ public class UserDTO
     private String email;
     private String first_name;
     private String last_name;
-    private Collection<Role> roles;
+    private String role;
 
     public UserDTO(){}
-    public UserDTO(String login, String password, String email, String first_name, String last_name, Collection<Role> roles)
+    public UserDTO(String login, String password, String email, String first_name, String last_name, String role)
     {
         this.login = login;
         this.password = password;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.roles = roles;
+        this.role = role;
     }
 }

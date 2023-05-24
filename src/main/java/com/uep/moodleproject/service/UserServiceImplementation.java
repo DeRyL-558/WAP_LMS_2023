@@ -3,6 +3,7 @@ package com.uep.moodleproject.service;
 import com.uep.moodleproject.dto.UserDTO;
 import com.uep.moodleproject.model.Role;
 import com.uep.moodleproject.model.User;
+import com.uep.moodleproject.repository.RoleRepository;
 import com.uep.moodleproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,7 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,12 +25,17 @@ public class UserServiceImplementation implements UserService
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     /*@Autowired
     private BCryptPasswordEncoder passwordEncoder;*/ //do hashowania
 
     public User save(UserDTO userDTO)
     {
-        User user = new User(userDTO.getLogin(), userDTO.getPassword(), userDTO.getEmail(), userDTO.getFirst_name(), userDTO.getLast_name(), userDTO.getRoles());
+        Role role = roleRepository.findByRoleName(userDTO.getRole());
+
+        User user = new User(userDTO.getLogin(), userDTO.getPassword(), userDTO.getEmail(), userDTO.getFirst_name(), userDTO.getLast_name(), Collections.singletonList(role));
         return userRepository.save(user);
     }
 
