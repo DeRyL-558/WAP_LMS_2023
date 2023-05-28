@@ -36,7 +36,7 @@ public class RegisterController
     }
 
     @GetMapping
-    private String registerPage(Model model, HttpSession hhtpSession)
+    private String registerPage(Model model)
     {
         List<Role> availableRoles = roleRepository.findAllByRoleNameNot("Administrator");
 
@@ -48,9 +48,9 @@ public class RegisterController
     @PostMapping
     private String addAccount(@ModelAttribute("user")UserDTO userDTO, RedirectAttributes redirectAttributes)
     {
-        List<User> usersWithSameLogin = userRepository.findByLogin(userDTO.getLogin());
+        List<User> usersFromDatabase = userRepository.findByLogin(userDTO.getLogin());
 
-        if (!usersWithSameLogin.isEmpty())
+        if (!usersFromDatabase.isEmpty())
         {
             redirectAttributes.addAttribute("warning_login", true);
             return "redirect:/register";
@@ -59,7 +59,7 @@ public class RegisterController
         /*if (userDTO.getPassword() != userDTO.getPassword()) { return "redirect:/register"; }*/
 
         User user = userService.save(userDTO);
-        return "redirect:/";
+        return "redirect:/sign-in";
 
 
         /*if (userDTO.setRole() == "Instructor")

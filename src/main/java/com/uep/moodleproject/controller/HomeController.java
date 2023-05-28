@@ -18,7 +18,7 @@ public class HomeController
     public HomeController(UserRepository userRepository) { this.userRepository = userRepository; }
 
     @GetMapping(path = "/")
-    public String home(Model model, HttpSession hhtpSession)
+    public String home(Model model, HttpSession session)
     {
         model.addAttribute("users", userRepository.findAll());
         return "index";
@@ -30,8 +30,5 @@ public class HomeController
     //new User(new Integer(1), "xdomin", "dupa123", "Dominik", "Torreto", "cosiki@xyz.com", "student");
 
     @GetMapping(path = "/courses")
-    public String courses(Model model, HttpSession hhtpSession) { return "courses"; }
-
-    @GetMapping(path = "/login")
-    public String sign_in() { return "login"; }
+    public String courses(Model model, HttpSession session) { return "courses"; }
 }
