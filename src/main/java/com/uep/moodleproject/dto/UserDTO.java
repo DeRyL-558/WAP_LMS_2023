@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,6 +17,7 @@ public class UserDTO
     private String first_name;
     private String last_name;
     private String role;
+    private List<Role> roles;
 
     public UserDTO(){}
     public UserDTO(String login, String password, String email, String first_name, String last_name, String role)
@@ -27,4 +29,7 @@ public class UserDTO
         this.last_name = last_name;
         this.role = role;
     }
+
+    public List<Role> getRoles() { return roles; }
+    public void setRoles(List<Role> roles) { this.roles = roles; }
 }

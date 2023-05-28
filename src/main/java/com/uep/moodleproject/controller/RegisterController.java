@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -24,7 +25,6 @@ public class RegisterController
 {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
     private UserServiceImplementation userService;
 
     @Autowired
@@ -46,23 +46,25 @@ public class RegisterController
     }
 
     @PostMapping
-    private String addAccount(@ModelAttribute("users")UserDTO userDTO)
+    private String addAccount(@ModelAttribute("user")UserDTO userDTO, RedirectAttributes redirectAttributes)
     {
-        List<User> userFromDatabase = userRepository.findByLogin(userDTO.getLogin());
+        List<User> usersWithSameLogin = userRepository.findByLogin(userDTO.getLogin());
 
-        if (!userFromDatabase.isEmpty()) { return "redirect:/register?warning_login"; }
+        if (!usersWithSameLogin.isEmpty())
+        {
+            redirectAttributes.addAttribute("warning_login", true);
+            return "redirect:/register";
+        }
 
-        if (userDTO.getPassword() != userDTO.getPassword()) { return "redirect:/register"; }
+        /*if (userDTO.getPassword() != userDTO.getPassword()) { return "redirect:/register"; }*/
 
-        userService.save(userDTO);
+        User user = userService.save(userDTO);
         return "redirect:/";
-        /*if (userDTO.getRoles() == 3)
+
+
+        /*if (userDTO.setRole() == "Instructor")
         {
             return "redirect:/register-notification";
-        }
-        else
-        {
-            return "redirect:/";
         }*/
     }
 }
