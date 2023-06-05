@@ -7,6 +7,7 @@ import com.uep.moodleproject.repository.RoleRepository;
 import com.uep.moodleproject.repository.UserRepository;
 import com.uep.moodleproject.service.UserServiceImplementation;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +36,20 @@ public class RegisterController
         this.userService = userService;
     }
 
-    @GetMapping
-    private String registerPage(Model model)
+    private boolean isUserLoggedIn(HttpServletRequest request)
     {
+        HttpSession session = request.getSession(false);
+        return session != null && session.getAttribute("user") != null;
+    }
+
+    @GetMapping
+    private String registerPage(Model model, HttpServletRequest request)
+    {
+        if (isUserLoggedIn(request))
+        {
+            return "redirect:/";
+        }
+
         List<Role> availableRoles = roleRepository.findAllByRoleNameNot("Administrator");
 
         model.addAttribute("users", new UserDTO());
@@ -48,23 +60,30 @@ public class RegisterController
     @PostMapping
     private String addAccount(@ModelAttribute("user")UserDTO userDTO, RedirectAttributes redirectAttributes)
     {
-        List<User> usersFromDatabase = userRepository.findByLogin(userDTO.getLogin());
+        List<User> usersFromDatabaseLOGIN = userRepository.findByLogin(userDTO.getLogin());
+        List<User> usersFromDatabaseEMAIL = userRepository.findByEmail(userDTO.getEmail());
 
-        if (!usersFromDatabase.isEmpty())
+        if (!usersFromDatabaseLOGIN.isEmpty())
         {
             redirectAttributes.addAttribute("warning_login", true);
             return "redirect:/register";
         }
 
-        /*if (userDTO.getPassword() != userDTO.getPassword()) { return "redirect:/register"; }*/
+        if(!usersFromDatabaseEMAIL.isEmpty())
+        {
+            redirectAttributes.addAttribute("warning_email", true);
+            return "redirect:/register";
+        }
 
         User user = userService.save(userDTO);
-        return "redirect:/sign-in";
 
-
-        /*if (userDTO.setRole() == "Instructor")
+        if (userDTO.getRole().equals("Course_coordinator"))
         {
             return "redirect:/register-notification";
-        }*/
+        }
+        else
+        {
+            return "redirect:/sign-in";
+        }
     }
 }

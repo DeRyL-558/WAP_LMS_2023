@@ -3,6 +3,8 @@ package com.uep.moodleproject.controller;
 import com.uep.moodleproject.dto.UserDTO;
 import com.uep.moodleproject.model.User;
 import com.uep.moodleproject.repository.UserRepository;
+import com.uep.moodleproject.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,20 @@ public class SigninController
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(path = "/sign-in")
-    public String signinPage(Model model)
+    private boolean isUserLoggedIn(HttpServletRequest request)
     {
+        HttpSession session = request.getSession(false);
+        return session != null && session.getAttribute("user") != null;
+    }
+
+    @GetMapping(path = "/sign-in")
+    public String signinPage(Model model, HttpServletRequest request)
+    {
+        if (isUserLoggedIn(request))
+        {
+            return "redirect:/";
+        }
+
         model.addAttribute("users", new UserDTO());
         return "login";
     }

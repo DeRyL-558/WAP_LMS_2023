@@ -59,17 +59,14 @@
                 <div class = "half_form">
                     <fieldset class = "class_field"><legend>E-mail</legend>
                         <input class = "form_text_block" th:field = "*{email}" type = "text" required/>
+                        <span style = "color: red" th:if = "${param.warning_email}">This e-mail is claimed!</span>
                     </fieldset>
                     <fieldset class = "class_field"><legend>Login</legend>
                         <input class = "form_text_block" th:field = "*{login}" type = "text" required/>
                         <span style = "color: red" th:if = "${param.warning_login}">This login is claimed!</span>
                     </fieldset>
-                    <fieldset class = "class_field"><legend>Your Password</legend>
-                        <input class = "form_text_block" name = "your_password" type = "password" required/>
-                    </fieldset>
-                    <fieldset class = "class_field"><legend>Confirm Password</legend>
+                    <fieldset class = "class_field"><legend>Password</legend>
                         <input class = "form_text_block" th:field = "*{password}" type = "password" required/>
-                        <span style = "color: red" th:if = "${param.warning_password}">Passwords are different!</span>
                     </fieldset>
                 </div>
                 
