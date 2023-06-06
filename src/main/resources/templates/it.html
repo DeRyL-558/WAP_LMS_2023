@@ -13,9 +13,9 @@
         <div class = "head_part" style = "text-align: right;">
             <br/>
             <div th:if = "${session.user}" id = "user_card" style = "border: cornflowerblue 1px dashed; width: 256px !important; font-size: 20px; padding: 8px; margin-left: 666px;">
-                <span th:if = "${session.user}">Hello <span th:text = "${session.user.first_name}"></span>!</span><br/>
+                <span th:if = "${session.user}">Hello <span th:text = "${session.user.first_name}"/>!</span><br/>
                 <form th:if="${session.user != null}" action = "/logout" method = "post">
-                    <a href = "#"><input type = "button" value = "User's panel"/></a>
+                    <a href = "/panel"><input type = "button" value = "User's panel"/></a>
                     <input type="submit" value = "Logout"/>
                 </form>
             </div>

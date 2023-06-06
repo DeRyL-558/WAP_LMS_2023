@@ -14,7 +14,7 @@
             <br/>
             <div th:if = "${session.user}" id = "user_card" style = "border: cornflowerblue 1px dashed; width: 256px !important; font-size: 20px; padding: 8px; margin-left: 666px;">
                 <span th:if = "${session.user}">Hello <span th:text = "${session.user.first_name}"/>!</span><br/>
-                <form th:if="${session.user != null}" action = "/logout" method = "post">
+                <form th:if = "${session.user != null}" action = "/logout" method = "post">
                     <a href = "/panel"><input type = "button" value = "User's panel"/></a>
                     <input type="submit" value = "Logout"/>
                 </form>
@@ -43,14 +43,7 @@
             </ul>
         </nav>
         <main style = "height: 800px;">
-            <h2>Welcome to our platform!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis eleifend purus nec dictum. Fusce magna nunc, pharetra ac rhoncus quis, maximus vel nulla. Aenean nisl ante, molestie hendrerit enim vitae, vulputate aliquet sem. Nam a viverra felis. Mauris id tellus eros. Quisque ex est, consectetur sed hendrerit in, mattis eget lacus. Duis sed cursus diam, sit amet interdum augue.</p>
-
-            <p>Ut tristique eget turpis rhoncus rutrum. Fusce non purus at leo varius facilisis ornare eu massa. Vestibulum sodales ultrices tortor, sit amet mollis lorem consectetur vel. Suspendisse vitae nibh posuere, ornare eros ac, laoreet arcu. Donec ultrices eros at tellus porttitor ultrices. Fusce eu sodales ligula. In sed nibh imperdiet, rhoncus leo eu, gravida eros. Nullam pharetra placerat odio, ac interdum mi pharetra sit amet. Sed efficitur erat quam, in vestibulum sapien fermentum fringilla.</p>
-            
-            <p>Maecenas id metus sed odio commodo tristique. Proin sollicitudin eu dui et vehicula. Sed feugiat finibus sapien ac auctor. Donec quis enim interdum, posuere libero id, lobortis velit. Suspendisse sagittis diam hendrerit aliquam ultrices. Praesent condimentum vestibulum eleifend. Suspendisse a metus nisi. Integer ullamcorper lobortis ligula quis congue. Cras sed quam a lacus lacinia pellentesque sit amet eget ligula. Maecenas malesuada odio nec tellus tempor, eu aliquet nulla bibendum. Nullam sit amet aliquam tellus. Ut vel tortor eget tortor pellentesque sollicitudin sit amet eu neque. Etiam ultricies at risus ut laoreet. Nam enim purus, ullamcorper quis justo a, sagittis porttitor metus. Maecenas efficitur felis turpis, sed faucibus tellus vulputate et.</p>
-            
-            <!--Exemplary sites: Courses (IT Department), Course 1-->
+            <h2><span th:text = "${session.user.first_name}"/> <span th:text = "${session.user.last_name}"/></h2>
         </main>
     </div>
     <footer>
