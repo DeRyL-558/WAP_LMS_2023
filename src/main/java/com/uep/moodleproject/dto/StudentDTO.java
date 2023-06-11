@@ -2,7 +2,7 @@ package com.uep.moodleproject.dto;
 
 public class StudentDTO
 {
-    private String name;
+    /*private String name;
     private Integer points;
 
     public String getName() { return name; }
@@ -11,5 +11,5 @@ public class StudentDTO
 
     public Integer getPoints() {return points;}
 
-    public void setPoints(Integer points) { this.points = points; }
+    public void setPoints(Integer points) { this.points = points; }*/
 }

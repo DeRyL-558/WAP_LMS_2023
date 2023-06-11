@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentsService
 {
-    @Autowired
+    /*@Autowired
     private StudentsRepository studentsRepository;
 
     public void addStudent(StudentDTO studentDTO)
@@ -21,5 +21,5 @@ public class StudentsService
         System.out.println("Students added!");
     }
 
-    public Iterable<Student> getAllStudents() { return studentsRepository.findAll(); }
+    public Iterable<Student> getAllStudents() { return studentsRepository.findAll(); }*/
 }

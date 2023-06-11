@@ -3,9 +3,10 @@ package com.uep.moodleproject.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Student
+@Table(name = "students")
+public class Student extends User
 {
-    @Id
+    /*@Id
     @Column(name = "id")
     private long id;
     @Column(name = "name")
@@ -36,6 +37,7 @@ public class Student
         this.points = points;
     }
 
-    public Student(String name, Integer points) {}
+    public Student(String name, Integer points) {}*/
+
 
 }

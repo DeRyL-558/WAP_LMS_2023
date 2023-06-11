@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api")
 public class StudentController
 {
-    private final StudentsService studentsService;
+    /*private final StudentsService studentsService;
 
     public StudentController(StudentsService studentsService) {
         this.studentsService = studentsService;
@@ -27,5 +27,5 @@ public class StudentController
     {
         studentsService.addStudent(studentDTO);
         return "Students added";
-    }
+    }*/
 }

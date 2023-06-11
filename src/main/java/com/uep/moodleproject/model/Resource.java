@@ -24,6 +24,10 @@ public class Resource
     @JoinColumn(name = "course_id")
     private Course course_id;
 
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "user_id")
+    private User author;
+
     private Integer res_displayOrder;
 
     @Transient

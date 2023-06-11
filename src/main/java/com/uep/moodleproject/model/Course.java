@@ -19,6 +19,10 @@ public class Course
     private String course_name;
     private String faculty;
 
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "user_id")
+    private User course_author;
+
     public Course(String course_name, String faculty)
     {
         this.course_name = course_name;
