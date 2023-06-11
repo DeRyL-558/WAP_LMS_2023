@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Collection;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -30,9 +30,9 @@ public class User
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     )
-    private Collection<Role> roles;
+    private List<Role> roles;
 
-    public User(String login, String password, String email, String first_name, String last_name, Collection<Role> roles)
+    public User(String login, String password, String email, String first_name, String last_name, List<Role> roles)
     {
         this.login = login;
         this.password = password;

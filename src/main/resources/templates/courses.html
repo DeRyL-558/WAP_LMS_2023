@@ -17,7 +17,7 @@
                 <span th:if = "${session.user}">Hello <span th:text = "${session.user.first_name}"/>!</span><br/>
                 <form th:if="${session.user != null}" action = "/logout" method = "post">
                     <a href = "/panel"><input type = "button" value = "User's panel"/></a>
-                    <input type="submit" value = "Logout"/>
+                    <input type = "submit" value = "Logout"/>
                 </form>
             </div>
 

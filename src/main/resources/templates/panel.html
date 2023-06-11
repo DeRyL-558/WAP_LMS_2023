@@ -44,6 +44,9 @@
         </nav>
         <main style = "height: 800px;">
             <h2><span th:text = "${session.user.first_name}"/> <span th:text = "${session.user.last_name}"/></h2>
+
+            <b>User's type: </b><span th:each = "role: ${session.user.roles}" th:text = "${role.role_name}"/><br/>
+            <b>E-mail: </b><span th:text = "${session.user.email}"/><br/>
         </main>
     </div>
     <footer>

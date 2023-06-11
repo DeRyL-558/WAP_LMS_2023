@@ -1,12 +1,8 @@
 package com.uep.moodleproject.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -17,8 +13,7 @@ import lombok.Setter;
 public class Course
 {
     @Id
-    @GeneratedValue
-    @NonNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long course_id;
 
     private String course_name;
