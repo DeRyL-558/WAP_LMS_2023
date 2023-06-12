@@ -45,7 +45,7 @@
         <main style = "height: 800px;">
             <h2>Courses</h2>
             <a href = "#"><div class = "course" th:each = "course : ${courses}">
-                <br/><span th:text = "${course.faculty}"></span><br/>
+                <br/><span th:text = "${course.course_faculty}"></span><br/>
                 <b th:text = "${course.course_name}"></b><br/>
                 <i>Author: XYZ</i>
             </div></a>

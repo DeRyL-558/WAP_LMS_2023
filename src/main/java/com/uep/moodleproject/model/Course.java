@@ -17,15 +17,16 @@ public class Course
     private Long course_id;
 
     private String course_name;
-    private String faculty;
+    private String course_faculty;
 
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "user_id")
     private User course_author;
 
-    public Course(String course_name, String faculty)
+    public Course(String course_name, String course_faculty, User course_author)
     {
         this.course_name = course_name;
-        this.faculty = faculty;
+        this.course_faculty = course_faculty;
+        this.course_author = course_author;
     }
 }

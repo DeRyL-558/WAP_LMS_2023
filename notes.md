@@ -7,7 +7,7 @@ IT Department
 -Engineering Tools
 -Discrete Mathematics
 
-Faculty of Managment
+Faculty of Management
 -Basics of Logistics
 -Occupational Health and Safety
 -Asset Protection

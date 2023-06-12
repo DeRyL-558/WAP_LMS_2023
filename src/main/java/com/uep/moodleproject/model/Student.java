@@ -3,7 +3,8 @@ package com.uep.moodleproject.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "students")
+@Table(name = "users")
+@SecondaryTable(name = "students", pkJoinColumns = @PrimaryKeyJoinColumn(name = "user_id"))
 public class Student extends User
 {
     /*@Id
@@ -38,6 +39,15 @@ public class Student extends User
     }
 
     public Student(String name, Integer points) {}*/
+    @Column(table = "students", columnDefinition = "INTEGER DEFAULT 1")
+    private Integer year;
 
+    @Column(table = "students", columnDefinition = "INTEGER DEFAULT 1")
+    private Integer semester;
 
+    @Column(table = "students", columnDefinition = "VARCHAR(100) DEFAULT 'Unknown'")
+    private String student_faculty;
+
+    @Column(table = "students", columnDefinition = "INTEGER DEFAULT 0")
+    private Integer points;
 }
