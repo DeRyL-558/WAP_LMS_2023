@@ -32,10 +32,11 @@
                     <li><a href = "/courses">Courses</a></li>
                     <ul>
                         <li><a href = "/courses/it">IT Department</a></li>
-                        <li><a href = "/courses/"> Faculty</a></li>
+                        <li><a href = "/courses/management">Faculty of Management</a></li>
+                        <li><a href = "/courses/humanities">Faculty of Humanities</a></li>
                     </ul>
-                    <li><a href = "#">My courses</a></li>
-                    <ul>
+                    <li th:if = "${session.user}"><a href = "#">My courses</a></li>
+                    <ul th:if = "${session.user}">
                         <li><a href = "/my-courses/course-1">Course 1</a></li>
                         <li><a href = "#">Course 2</a></li>
                     </ul>
@@ -62,6 +63,8 @@
                 <b>Academic title: </b><span th:text = "${coordinator.cc_academic_title}"/><br/>
                 <h4>Edit Courses</h4>
                 <input type = "button" th:each = "course: ${courses}" th:value = "${course.course_name}"/>
+                <br/>
+                <h4>Add Course <input type = "button" value = "Create!"/></h4>
             </div>
 
             <!--Instructor-->
@@ -78,6 +81,8 @@
                 <br/>
                 <h4>Edit Courses</h4>
                 <input type = "button" th:each = "course: ${courses}" th:value = "${course.course_name}"/>
+                <br/>
+                <h4>Add Course <input type = "button" value = "Create!"/></h4>
             </div>
         </main>
     </div>

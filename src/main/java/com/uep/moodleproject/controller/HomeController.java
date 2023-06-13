@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-
 @Controller
 public class HomeController
 {
@@ -29,5 +27,5 @@ public class HomeController
     //new User(new Integer(1), "xdomin", "dupa123", "Dominik", "Torreto", "cosiki@xyz.com", "student");
 
     @GetMapping(path = "/courses")
-    public String courses(Model model, HttpSession session) { return "courses"; }
+    public String courses(Model model, HttpSession session) { return "coursefaculty"; }
 }

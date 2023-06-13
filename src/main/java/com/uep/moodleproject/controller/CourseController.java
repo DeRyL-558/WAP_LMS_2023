@@ -21,10 +21,27 @@ public class CourseController
         this.courseRepository = courseRepository;
     }
     @GetMapping(path = "/courses/it")
-    public String it(Model model, HttpSession httpSession)
+    public String ItCourses(Model model, HttpSession httpSession)
     {
-        model.addAttribute("courses", courseRepository.findAll());
-        return "it";
+        List<Course> itCourses = courseRepository.findByCourseFaculty("IT Department");
+        model.addAttribute("courses", itCourses);
+        return "courselist";
+    }
+
+    @GetMapping(path = "/courses/management")
+    public String ManagementCourses(Model model, HttpSession httpSession)
+    {
+        List<Course> managementCourses = courseRepository.findByCourseFaculty("Faculty of Management");
+        model.addAttribute("courses", managementCourses);
+        return "courselist";
+    }
+
+    @GetMapping(path = "/courses/humanities")
+    public String HumanitiesCourses(Model model, HttpSession httpSession)
+    {
+        List<Course> humanitiesCourses = courseRepository.findByCourseFaculty("Faculty of Humanities");
+        model.addAttribute("courses", humanitiesCourses);
+        return "courselist";
     }
 
     @GetMapping(path = "/my-courses/course-1")

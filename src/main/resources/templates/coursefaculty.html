@@ -4,6 +4,7 @@
     <meta charset = "UTF-8">
     <title>LMS - Courses | IT Department</title>
     <link rel = "stylesheet" type = "text/css" href = "/style.css"/> <!--w finalnej wersji zmienić ścieżkę na style.css-->
+    <link rel = "stylesheet" type = "text/css" href = "/courses.css"/>
 </head>
 <body>
     <header>
@@ -16,7 +17,7 @@
                 <span th:if = "${session.user}">Hello <span th:text = "${session.user.first_name}"/>!</span><br/>
                 <form th:if="${session.user != null}" action = "/logout" method = "post">
                     <a href = "/panel"><input type = "button" value = "User's panel"/></a>
-                    <input type="submit" value = "Logout"/>
+                    <input type = "submit" value = "Logout"/>
                 </form>
             </div>
 
@@ -27,15 +28,16 @@
     <div id = "container">
         <nav id = "side_nav">
             <ul>
-                <li><a href = "/">Home</a></li> <!--później wstawić źródła według kontrolerów-->
+                <li><a href = "/">Home</a></li> <!--źródła według kontrolerów-->
                 <ul>
                     <li><a href = "/courses">Courses</a></li>
                     <ul>
                         <li><a href = "/courses/it">IT Department</a></li>
-                        <li><a href = "/courses/">Faculty</a></li>
+                        <li><a href = "/courses/management">Faculty of Management</a></li>
+                        <li><a href = "/courses/humanities">Faculty of Humanities</a></li>
                     </ul>
-                    <li><a href = "#">My courses</a></li>
-                    <ul>
+                    <li th:if = "${session.user}"><a href = "#">My courses</a></li>
+                    <ul th:if = "${session.user}">
                         <li><a href = "/my-courses/course-1">Course 1</a></li>
                         <li><a href = "#">Course 2</a></li>
                     </ul>
@@ -44,10 +46,14 @@
         </nav>
         <main style = "height: 800px;">
             <h2>Courses</h2>
-            <a href = "#"><div class = "course" th:each = "course : ${courses}">
-                <br/><span th:text = "${course.course_faculty}"></span><br/>
-                <b th:text = "${course.course_name}"></b><br/>
-                <i>Author: XYZ</i>
+            <a href = "/courses/it" style = "text-decoration: none;"><div class = "course_header">
+                <h4>IT Department</h4>
+            </div></a>
+            <a href = "/courses/management" style = "text-decoration: none;"><div class = "course_header">
+                <h4>Faculty of Management</h4>
+            </div></a>
+            <a href = "/courses/humanities" style = "text-decoration: none;"><div class = "course_header">
+                <h4>Faculty of Humanities</h4>
             </div></a>
         </main>
     </div>
