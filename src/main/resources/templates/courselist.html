@@ -45,7 +45,8 @@
         </nav>
         <main style = "height: 800px;">
             <h2>Courses</h2>
-            <a href = "#"><div class = "course" th:each = "course : ${courses}">
+            <a class = "course_link" th:each = "course: ${courses}" th:href = "@{/courses/{courseId}(courseId = ${course.course_id})}">
+            <div class = "course">
                 <br/><span th:text = "${course.course_faculty}"></span><br/>
                 <b th:text = "${course.course_name}"></b><br/>
                 <i>Author: <span th:text = "${course.course_author.first_name} + ' ' + ${course.course_author.last_name}"/></i>

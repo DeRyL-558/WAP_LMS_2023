@@ -21,7 +21,7 @@ public class Resource
     private String res_description;
 
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
     private Course course_id;
 
     @ManyToOne
