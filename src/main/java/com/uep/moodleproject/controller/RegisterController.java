@@ -5,6 +5,7 @@ import com.uep.moodleproject.model.Role;
 import com.uep.moodleproject.model.User;
 import com.uep.moodleproject.repository.RoleRepository;
 import com.uep.moodleproject.repository.UserRepository;
+import com.uep.moodleproject.service.UserService;
 import com.uep.moodleproject.service.UserServiceImplementation;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,10 +27,10 @@ public class RegisterController
 {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private UserServiceImplementation userService;
+    private UserService userService;
 
     @Autowired
-    public RegisterController(UserRepository userRepository, UserServiceImplementation userService, RoleRepository roleRepository)
+    public RegisterController(UserRepository userRepository, UserService userService, RoleRepository roleRepository)
     {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;

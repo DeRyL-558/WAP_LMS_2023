@@ -47,6 +47,38 @@
 
             <b>User's type: </b><span th:each = "role: ${session.user.roles}" th:text = "${role.role_name}"/><br/>
             <b>E-mail: </b><span th:text = "${session.user.email}"/><br/>
+            <br/><br/>
+
+            <!--Student-->
+            <div th:if="${student != null}">
+                <b>Student Faculty: </b><span th:text = "${student.student_faculty}"/><br/>
+                <b>Year: </b><span th:text = "${student.year}"/><br/>
+                <b>Semester: </b><span th:text = "${student.semester}"/><br/>
+                <b>Points from Courses: </b><span th:text = "${student.points}"/><br/>
+            </div>
+
+            <!--Course Coordinator-->
+            <div th:if = "${coordinator != null}">
+                <b>Academic title: </b><span th:text = "${coordinator.cc_academic_title}"/><br/>
+                <h4>Edit Courses</h4>
+                <input type = "button" th:each = "course: ${courses}" th:value = "${course.course_name}"/>
+            </div>
+
+            <!--Instructor-->
+            <div th:if = "${instructor != null}">
+                <b>Academic title: </b><span th:text = "${instructor.i_academic_title}"/>
+            </div>
+
+            <!--Administrator-->
+            <div th:if = "${administrator != null}">
+                <h4>Edit Users</h4>
+                <input type = "button" value = "Students"/>
+                <input type = "button" value = "Course Coordinators"/>
+                <input type = "button" value = "Instructors"/>
+                <br/>
+                <h4>Edit Courses</h4>
+                <input type = "button" th:each = "course: ${courses}" th:value = "${course.course_name}"/>
+            </div>
         </main>
     </div>
     <footer>

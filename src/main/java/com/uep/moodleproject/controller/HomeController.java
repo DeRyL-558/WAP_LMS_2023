@@ -20,7 +20,6 @@ public class HomeController
     @GetMapping(path = "/")
     public String home(Model model, HttpSession session)
     {
-        model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 
